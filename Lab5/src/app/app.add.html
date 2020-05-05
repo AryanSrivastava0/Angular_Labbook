@@ -1,0 +1,110 @@
+Operations You Can Perform:
+<select [(ngModel)]="ActionSelection">
+  <option value="add">Add Movie
+  <option value="search">Search Movie
+
+</select>
+
+      
+    
+   
+
+
+
+  
+    <div [ngSwitch]="ActionSelection"> 
+      <div *ngSwitchCase="'add'">
+
+        <div class="container">
+        <div style="padding-left: 70px; padding-right:70px" class="border border-success">
+<font align="center"><h2>Add Movie..</h2></font>
+<form  #movForm="ngForm" (ngSubmit)="addEmployee()">
+    
+      <label for="name">Enter Movie Name:-</label>
+      <input type="text" class="form-control"  name="mname" id="mName" [(ngModel)]="mName" #namecontrol="ngModel"  aria-describedby="nameHelp" placeholder="Enter Movie Name" required>
+      <small id="idHelp" class="form-text text-muted" *ngIf="namecontrol.touched && namecontrol.invalid">*Movie Name Required.</small>
+   
+   
+      <label for="name">Movie Rating:-</label>
+      <input type="text" class="form-control"  placeholder="Movie Rating" name="mrate" id="mRate" [(ngModel)]="mRate" #ratecontrol="ngModel" required>
+      <small id="namelHelp" class="form-text text-muted" *ngIf="ratecontrol.touched && ratecontrol.invalid">*Movie Rating Required.</small>
+    
+    <label class="my-1 mr-2" for="productcat" style="padding-left: 50px; padding-right:100px">Movie Category:-</label>
+    
+    <select class="custom-select my-1 mr-sm-2"  name="Mcatg" id="catg"  [(ngModel)]="mSelect" #selectcontrol="ngModel" required>
+            <option selected>Choose...</option>
+        <option value="Drama">Drama</option>
+        <option value="Friction">Friction</option>
+        <option value="Action">Action</option>
+    </select>
+  
+    <small id="selectHelp" class="form-text text-muted" *ngIf="selectcontrol.touched && selectcontrol.invalid">*Selection Required.</small>
+
+   
+     
+    
+    <button  type="submit" value="Add Data" [disabled]="movForm.invalid" class="btn btn-success">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button  type="reset" value="Clear" class="btn btn-danger">Clear</button>
+  </form>
+</div></div></div>
+
+<div class="container">
+    <div style="padding-left: 70px; padding-right:70px" class="border border-success">
+
+      
+    <div *ngSwitchCase="'search'">
+<h2>Search Movie By Category........</h2>
+<form  #searchForm="ngForm" (ngSubmit)="searchEmp()">
+
+  <label class="my-1 mr-2" for="productcat" style="padding-left: 100px; padding-right:100px">Movie Category:-</label>
+  
+  <select class="custom-select my-1 mr-sm-2"  name="Mcatg" id="catg"  [(ngModel)]="mSelect" #selectcontrol="ngModel" required>
+      <option selected>Choose...</option>
+  <option value="Drama">Drama</option>
+  <option value="Friction">Friction</option>
+  <option value="Action">Action</option>
+</select>
+  
+  <small id="selectHelp" class="form-text text-muted" *ngIf="selectcontrol.touched && selectcontrol.invalid">*Selection Required.</small>
+
+<button  type="submit" value="Add Data" [disabled]="searchForm.invalid" class="btn btn-success">Submit</button>
+</form>
+<br><br>
+<style>
+    th{
+         text-align: center;
+         font-style: italic;
+         color: blueviolet;
+    }
+    td{
+        text-align: center;
+         font-style: italic;
+    }
+    </style>
+<div *ngIf="status">
+<table border="2">
+<tr>
+    
+    <th>Movie Name</th>
+    <th>Movie Rating</th>
+    
+
+</tr>
+<tr *ngFor="let mov of result">
+    <td>{{mov.mName}}</td>
+    <td>{{mov.mRate}}</td>
+    
+</tr>
+
+</table>
+</div></div>
+</div>
+<p *ngSwitchDefault>Please Select One Of The Operations</p>
+</div>
+
+  
+
+
+   
+    
+    
