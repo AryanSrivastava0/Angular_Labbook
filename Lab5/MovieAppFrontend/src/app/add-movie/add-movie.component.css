@@ -1,0 +1,26 @@
+#addMovieForm{
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+label{
+    font-family: 'Segoe UI';
+    font-size: large;
+    font-weight: normal;
+    font-style: italic;
+    color: maroon;
+    margin-bottom: 0px;
+}
+input{
+    margin-top: 0px;
+}
+.form-group{
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+.alert{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: small;
+    margin-top: 0px;
+}

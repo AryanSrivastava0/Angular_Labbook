@@ -1,0 +1,32 @@
+<form id="searchMovieForm" name="searchMovieForm" #searchMovieForm="ngForm">
+    <div class="form-group">
+        <label for="moviesGenre">Movie Genre</label>
+        <select [(ngModel)]="tempGenre" required ngModel #moviesGenre="ngModel" name="moviesGenre" class="browser-default custom-select">
+            <option value=null selected disabled>--SELECT--</option>
+            <option value="drama">DRAMA</option>
+            <option value="fiction">FICTION</option>
+            <option value="horror">HORROR</option>
+        </select>
+    </div>
+    <div class="alert alert-danger" *ngIf="moviesGenre.touched && !moviesGenre.valid">Please Select a movie Genre</div>
+    <div class="form-group">
+        <input type="button" [disabled]="!searchMovieForm.valid" class="btn btn-primary" name="searchMovie" id="searchMovie" value="Search Movie" (click)="searchMovie()">
+    </div>
+</form>
+<br><br>
+<table align="center" style="width: 600px; font-size: large;" id="moviesTable" class="table-bordered">
+    <tr>
+        <th colspan="3">Selected Genre: {{movieGenre.toUpperCase()}}</th>
+    </tr>
+    <tr>
+        <th>#</th>
+        <th>Movie</th>
+        <th>Rating</th>
+    </tr>
+    <tr *ngFor="let movie of movies; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{movie.moviesName}}</td>
+        <td>{{movie.moviesRating}}</td>
+    </tr>
+</table>
+<div>{{message}}</div>

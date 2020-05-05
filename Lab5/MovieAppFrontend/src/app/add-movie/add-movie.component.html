@@ -1,0 +1,27 @@
+<form  id="addMovieForm" name="addMovieForm" #addMovieForm="ngForm">
+    <div class="form-group">
+        <label for="moviesName">Movie Name</label>
+        <input [(ngModel)]="movieName" required maxlength="25" pattern="[a-zA-Z0-9 ]+" ngModel #moviesName="ngModel" type="text" name="moviesName" id="moviesName" class="form-control" >
+    </div>
+    <div class="alert alert-danger" *ngIf="moviesName.touched && !moviesName.valid">Movie name can only contain alphabets, numbers & spaces</div>
+    <div class="form-group">
+        <label for="moviesRating">Movie Rating</label>
+        <input [(ngModel)]="movieRating" required pattern="(10|\d)" ngModel #moviesRating="ngModel" type="text" name="moviesRating" id="moviesRating" class="form-control">
+    </div>
+    <div class="alert alert-danger" *ngIf="moviesRating.touched && !moviesRating.valid">Movie Rating has to be a number between 0 to 10</div>
+    <div class="form-group">
+        <label for="moviesGenre">Movie Genre</label>
+        <select [(ngModel)]="movieGenre" required ngModel #moviesGenre="ngModel" name="moviesGenre" class="browser-default custom-select">
+            <option value=null selected disabled>--SELECT--</option>
+            <option value="drama">DRAMA</option>
+            <option value="fiction">FICTION</option>
+            <option value="horror">HORROR</option>
+        </select>
+    </div>
+    <div class="alert alert-danger" *ngIf="moviesGenre.touched && !moviesGenre.valid">Please Select a movie genre</div>
+    <div class="form-group">
+        <input type="button" [disabled]="!addMovieForm.valid" class="btn btn-primary" id="addMovie" value="Add Movie" (click)="addMovie()">
+    </div>
+    <div class="alert alert-success" id="message" style="text-align: left; font-weight: bold; margin-top: 10px;">{{message}}</div>
+</form>
+
