@@ -1,0 +1,40 @@
+<form #empForm=ngForm (ngSubmit)="addEmployee()">
+    
+   
+        <div class="form-group row">
+                <label for="inputId" class="col-sm-2 col-form-label"><b>&nbsp;&nbsp;&nbsp;&nbsp;Employee ID</b></label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" name="id" id="eid" [(ngModel)]="empId" #idControl="ngModel" required  >
+                    <span  class="alert alert-danger" role="alert" *ngIf="idControl.touched && idControl.invalid">ID should be filled</span>    
+                </div>
+        </div>
+                <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"><b>&nbsp;&nbsp;&nbsp;&nbsp;Employee Name</b></label>
+                            <div class="col-sm-3">
+                            <input type="text" class="form-control" name="nname" id="ename" [(ngModel)]="empName" #nameControl="ngModel" required  >
+                            <span  class="alert alert-danger" role="alert" *ngIf="nameControl.touched && nameControl.invalid">Name should be filled</span>    
+                        </div>
+                </div>
+                        <div class="form-group row">
+                                <label for="inputId" class="col-sm-2 col-form-label"><b>&nbsp;&nbsp;&nbsp;&nbsp;Employee ID</b></label>
+                                    <div class="col-sm-3">
+                                    <input type="text" class="form-control" name="salary" id="esalary" [(ngModel)]="empSalary" #salaryControl="ngModel" required  >
+                                    <span  class="alert alert-danger" role="alert" *ngIf="salaryControl.touched && salaryControl.invalid">Salary should be filled</span>    
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                        <label for="inputId" class="col-sm-2 col-form-label"><b>&nbsp;&nbsp;&nbsp;&nbsp;Employee ID</b></label>
+                                            <div class="col-sm-3">
+                                            <input type="text" class="form-control" name="department" id="edepartment" [(ngModel)]="empDept" #deptControl="ngModel" required  >
+                                            <span  class="alert alert-danger" role="alert" *ngIf="deptControl.touched && deptControl.invalid">Department should be filled</span>    
+                                        </div>
+                                </div>
+        
+                                        <div class="form-group row">
+                                                <div class="col-sm-10">
+                                                <input type="button" class="btn btn-danger" value="ADD Employee" [disabled]="empForm.invalid">
+                                                </div>
+                                            </div>
+                                   
+<div> {{empId}} &nbsp;&nbsp;  {{empName}}  &nbsp;&nbsp; {{empSalary}} &nbsp;&nbsp;   {{empdept}}  </div>
+</form>    
